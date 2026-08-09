@@ -33,7 +33,7 @@ El flujo importado marcará errores en algunos nodos hasta que se configuren las
 
 ---
 
-## 💻 2. Configuración del Frontend (Para Allan)
+## 2. Configuración del Frontend
 
 En el archivo `cidium-landing-v2.html`, ubica el bloque de configuración al inicio del script y pega la URL de producción que generó n8n en el paso anterior:
 
@@ -44,7 +44,7 @@ const CONFIG = {
 };
 ```
 
-## 📝 3. ¿Cómo modificar los textos y diseños de los correos?
+## 3. ¿Cómo modificar los textos y diseños de los correos?
 
 Si en el futuro el equipo de marketing o ventas desea cambiar el texto de los correos automáticos, se debe hacer directamente en n8n:
 
@@ -60,7 +60,7 @@ Si en el futuro el equipo de marketing o ventas desea cambiar el texto de los co
 
 ---
 
-## 🗄️ 4. Base de Datos (Supabase)
+## 4. Base de Datos (Supabase)
 
 Si se necesita recrear la base de datos en otro entorno, ejecuta el script SQL dadó en el archivo `supabase.sql` en el SQL editor de Supabase. Esto creará la tabla `leads` con las columnas necesarias y activará la RLS.
 
