@@ -1,0 +1,15 @@
+<div style="font-family: Arial, sans-serif; color: #1E1E3C; line-height: 1.6; max-width: 600px;">
+  <h2 style="color: #000019; margin-bottom: 10px;">📩 Nuevo Mensaje de Contacto</h2>
+
+  <p style="margin-top: 0;">Alguien ha utilizado el formulario de contacto directo ("Hablemos") en la landing page de Cidium.</p>
+
+  <div style="border-left: 4px solid #FFB359; padding-left: 15px; margin: 24px 0;">
+    <p style="margin: 5px 0;"><strong>Nombre:</strong> {{ $json.body.nombre }}</p>
+    <p style="margin: 5px 0;"><strong>Correo:</strong> <a href="mailto:{{ $json.body.correo }}" style="color: #000019; font-weight: bold;">{{ $json.body.correo }}</a></p>
+    
+    <p style="margin: 20px 0 5px 0;"><strong>Mensaje:</strong></p>
+    <blockquote style="margin: 0; padding-left: 10px; border-left: 2px solid #E2E8F0; font-style: italic; color: #475569;">
+      {{ $json.body.mensaje }}
+    </blockquote>
+  </div>
+</div>
