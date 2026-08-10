@@ -65,5 +65,60 @@ Si en el futuro el equipo de marketing o ventas desea cambiar el texto de los co
 Si se necesita recrear la base de datos en otro entorno, ejecuta el script SQL dadó en el archivo `supabase.sql` en el SQL editor de Supabase. Esto creará la tabla `leads` con las columnas necesarias y activará la RLS.
 
 
+## 5. Lógica Comercial: Cálculo del Valor de Prospecto (VP)
+
+Para mantener la seguridad y evitar que la competencia o los usuarios vean cómo Cidium califica a sus prospectos, el cálculo del **Valor de Prospecto (VP)** se realiza de forma oculta en el backend (n8n).
+
+Este proceso ocurre en el primer nodo **Code** (ubicado después del Webhook). 
+
+### ¿Cómo modificar la fórmula de calificación?
+Si el equipo decide cambiar el peso que tiene cada respuesta para la calificación final, deben editar el código de ese nodo en las siguientes secciones:
+
+1. **Puntajes base (`tamMap` y `fitMap`):** 
+   Puedes cambiar cuántos puntos se le otorgan a una empresa según su tamaño o su nivel de urgencia (banda).
+   ```javascript
+   const tamMap = {"1-10": 45, "11-50": 100, "51-100": 90, "100+": 65};
+   const fitMap = { "verde": 10, "amarillo": 100, "naranja": 90, "rojo": 70 };
+   ```
+
+2. **Pesos de la fórmula final (Porcentajes):**
+   Si desean que el tamaño de la empresa importe más que los datos sensibles, solo deben ajustar los decimales en la fórmula final. Nota: La suma de los decimales siempre debe dar 1.00 (100%).
+   ```javascript
+   const vp = Math.round(
+   (0.30 * ptTam) +     // 30% asignado al tamaño
+   (0.25 * sensScore) + // 25% asignado a los datos sensibles
+   (0.30 * ptFit) +     // 30% asignado al fit comercial (banda)
+   (0.15 * urgencia)    // 15% asignado al Índice de Exposición
+   );
+   ```
+
+## 6. Traducción de Respuestas para Correos (Code Node)
+
+Para recibir las alertas rojas con las preguntas y respuestas legibles (en lugar de códigos JSON crudos como `{"tam": "11-50"}`), existe un segundo nodo **Code** (ubicado justo antes del correo de Alerta Roja) que transforma los datos en bloques HTML con diseño.
+
+### Mantenimiento (Importante para Frontend)
+Existe una regla de oro para este nodo: **Si el diseño del formulario en la Landing Page cambia, este nodo también debe actualizarse.**
+
+1. **Si se agrega o edita una pregunta en el HTML (`cidium-landing-v2.html`):**
+   Se debe agregar la misma clave y el texto exacto en el diccionario `PREGUNTAS` del nodo.
+   ```javascript
+   const PREGUNTAS = {
+     "tam": "¿Cuántas personas trabajan en tu empresa?",
+     // ... agregar nueva pregunta aquí
+   };
+   ```
+
+2. **Si se agregan nuevas opciones de respuesta:**
+   Se deben registrar en el diccionario `TRADUCCIONES` para que n8n sepa cómo convertirlas a texto legible.
+   ```javascript
+   const TRADUCCIONES = {
+     "11-50": "11 a 50",
+     "salud": "De salud (Sensible)",
+     // ... agregar nueva opción aquí
+   };
+   ```
+
+3. **Cambiar el color del diseño en el correo:**
+   Si se desea cambiar el borde rojo (`#EF4444`) que aparece junto a cada respuesta en el correo de la alerta, deben modificar la variable `listaHtml` al final de este mismo nodo Code.
 
 ### Documentación creada por Angel Higuera

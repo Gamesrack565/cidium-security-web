@@ -5,7 +5,7 @@
   
   <div style="padding: 24px;">
     <p style="font-weight: bold; font-size: 1.1rem; margin-top: 0; color: #EF4444;">Ha ingresado un nuevo diagnóstico con resultado ROJO.</p>
-    <p style="margin-bottom: 24px;">Este prospecto requiere contacto prioritario <strong>antes de 24 horas hábiles</strong> para cumplir con nuestra promesa comercial.</p>
+    <p style="margin-bottom: 24px;">Este prospecto requiere contacto prioritario <strong>antes de 24 horas hábiles</strong>.</p>
     
     <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #F8FAFC; border-radius: 8px; overflow: hidden;">
       <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0; width: 40%;"><strong>Empresa:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;">{{ $('Create a row').item.json.empresa }}</td></tr>
@@ -16,8 +16,14 @@
       <tr><td style="padding: 12px;"><strong>Valor de Prospecto (VP):</strong></td><td style="padding: 12px;"><strong style="color: #EF4444; font-size: 1.2rem;">{{ $('Create a row').item.json.vp }}</strong></td></tr>
     </table>
     
+    <!-- NUEVA SECCIÓN DE RESPUESTAS -->
+    <div style="margin-top: 24px; border-top: 2px solid #E2E8F0; padding-top: 20px;">
+      <h3 style="color: #EF4444; margin-top: 0; margin-bottom: 15px;">Detalle del Diagnóstico:</h3>
+      {{ $('Code in JavaScript').item.json.resumen_html }}
+    </div>
+    
     <p style="margin-top: 30px; font-size: 0.9rem; color: #1E1E3C; border-top: 1px solid #E2E8F0; padding-top: 15px;">
-      📌 <em>Revisa la tabla <strong>leads_diagnostico</strong> en Supabase para ver las respuestas completas de este prospecto y preparar la llamada.</em>
+      📌 <em>Puedes revisar más detalles del prospecto directamente en Supabase.</em>
     </p>
   </div>
 </div>
