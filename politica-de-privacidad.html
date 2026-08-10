@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidad | Cidium Security & Technology</title>
+<meta name="description" content="Política de Privacidad de Cidium. Conoce qué datos personales recopilamos, con qué finalidades los tratamos, tus derechos ARCO y cómo contactar al responsable.">
+<meta name="robots" content="index, follow">
+
+<style>
+/* ============================================================
+   TIPOGRAFÍAS
+   Activar cuando se reciban las webfonts con licencia.
+   ============================================================ */
+@font-face{font-family:"Jost";src:url("./fonts/Jost/Jost-VariableFont_wght.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap;}
+@font-face{font-family:"Schibsted Grotesk";src:url("./fonts/Schibsted_Grotesk/SchibstedGrotesk-VariableFont_wght.ttf") format("truetype");font-style:normal;font-weight:400 900;font-display:swap;}
+:root{
+  /* Marca */
+  --bg:#000019; --bg-2:#0B0B24; --bg-3:#0B0B24; --line:#1E1E3C;
+  --band-verde:#7DED9F; --band-amarillo:#B8C638; --band-naranja:#FF8000; --band-rojo:#DA4959;
+  --fg:#FFFFFF; --fg-2:#C7C7DA; --fg-3:#9A9AB4; --accent:#FFB359;
+  --accent-dk:#C77A22; --accent-glow:rgba(255,179,89,.14); --max:1120px; --r:14px;
+  --sans:"Jost","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif; --display:"Schibsted Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:76px;color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;font-size:17px;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+section{padding:96px 0;position:relative;background:var(--bg);}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.2;letter-spacing:-.02em;font-weight:700;}
+h1{font-size:clamp(1.7rem,4.2vw,3.55rem);}
+h2{font-size:clamp(1.65rem,3.4vw,2.4rem);}
+h3{font-size:1.13rem;}
+p{color:var(--fg-2);}
+a{color:inherit;}
+.eyebrow{font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:16px;display:block;}
+.lead{font-size:1.125rem;max-width:62ch;}
+.center{text-align:center;}
+.center .lead{margin-left:auto;margin-right:auto;}
+.section-alt{background:var(--bg-2);border-block:1px solid var(--line);}
+.mt-20{margin-top:20px;}
+.w-full{width:100%;}
+.justify-center{justify-content:center;}
+.skip-link{position:fixed;top:12px;left:12px;z-index:100;padding:10px 14px;border-radius:8px;background:var(--accent);color:var(--bg);font-weight:700;text-decoration:none;transform:translateY(-160%);transition:transform .15s ease;}
+.skip-link:focus{transform:translateY(0);}
+.btn{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:13px 24px;border-radius:10px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:.18s;}
+.btn-primary{background:var(--accent);color:#000019;}
+.btn-primary:hover{background:var(--accent);filter:brightness(1.04);transform:translateY(-1px);}
+.btn-ghost{border-color:var(--line);color:var(--fg);background:transparent;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+/* ============================================================
+   ACCESIBILIDAD
+   ============================================================ */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+.btn-primary:focus-visible{outline-color:#FFFFFF;box-shadow:0 0 0 2px #000019;}
+/* ============================================================
+   NAV
+   ============================================================ */
+header{position:sticky;top:0;z-index:60;background:rgba(0,0,25,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
+.logo{display:flex;align-items:center;min-height:44px;text-decoration:none;}
+.logo-img{display:block;width:auto;height:56px;object-fit:contain;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{color:var(--fg-2);text-decoration:none;font-size:.975rem;font-weight:500;min-height:44px;display:flex;align-items:center;}
+.nav-links a:hover{color:var(--accent);}
+.nav .btn{padding:10px 18px;font-size:.975rem;}
+@media(max-width:900px){.nav-links{display:none;}}
+/* ============================================================
+   HERO DE PÁGINA
+   ============================================================ */
+.legal-hero{padding:84px 0 56px;overflow:hidden;}
+.legal-hero::before{content:"";position:absolute;top:-240px;left:50%;transform:translateX(-50%);width:880px;height:520px;background:radial-gradient(ellipse,var(--accent-glow),transparent 66%);pointer-events:none;z-index:0;}
+.legal-hero .wrap{position:relative;z-index:1;}
+.legal-hero .lead{color:var(--fg-3);}
+/* ============================================================
+   CONTENIDO LEGAL
+   ============================================================ */
+.legal-section{padding:64px 0 104px;}
+.legal{max-width:76ch;}
+.legal h2{font-size:clamp(1.35rem,2.4vw,1.75rem);margin-top:52px;padding-top:30px;border-top:1px solid var(--line);}
+.legal h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+.legal p{margin-top:16px;font-size:1rem;line-height:1.7;}
+.legal strong{color:var(--fg);font-weight:700;}
+.legal a{color:var(--accent);}
+.legal ul{list-style:none;margin-top:16px;margin-bottom:24px;}
+.legal li{position:relative;padding-left:22px;margin-bottom:9px;font-size:1rem;color:var(--fg-2);line-height:1.6;}
+.legal li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:1px;background:var(--accent);transform:rotate(45deg);}
+.legal .finalidades{margin-top:16px;font-size:1rem;color:var(--fg);font-weight:600;}
+.legal .finalidades ul{margin-top:10px;}
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:var(--fg-3);}
+.fbot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;}
+.fbot a{min-height:44px;display:inline-flex;align-items:center;color:var(--fg-3);text-decoration:none;}
+.fbot a:hover{color:var(--accent);}
+/* ============================================================
+   RESPONSIVE GENERAL
+   ============================================================ */
+@media(max-width:1120px){
+  .wrap{padding-left:28px;padding-right:28px;}
+  .nav-links{gap:22px;}
+}
+@media(max-width:640px){
+  section{padding:72px 0;}
+  .wrap{padding-left:18px;padding-right:18px;}
+  .legal-hero{padding-top:64px;padding-bottom:40px;}
+  .fbot{align-items:flex-start;flex-direction:column;}
+  p,.lead{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+}
+@media(max-width:420px){
+  .nav{min-height:76px;}
+  .logo-img{height:52px;}
+  .nav .btn{padding:9px 12px;font-size:.8rem;}
+}
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="./cidium-landing-v2.html" aria-label="Cidium Security & Technology - Inicio"><img src="./imgs/logo-fondo-oscuro.png" alt="Cidium Security & Technology" class="logo-img"></a>
+    <nav class="nav-links" aria-label="Navegación principal"><a href="./cidium-landing-v2.html#diagnostico">Diagnóstico</a> <a href="./cidium-landing-v2.html#convergencia">Cobertura</a> <a href="./cidium-landing-v2.html#servicios">Servicios</a> <a href="./cidium-landing-v2.html#nosotros">Nosotros</a></nav>
+    <a class="btn btn-primary" href="./cidium-landing-v2.html#diagnostico">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<main id="main-content">
+
+<!-- ==========================================================
+     TÍTULO
+     ==========================================================-->
+<section class="legal-hero" id="top">
+  <div class="wrap center">
+    <span class="eyebrow">Política de privacidad</span>
+    <h1>Política de Privacidad de Cidium</h1>
+    <p class="lead mt-20">Última actualización: 31/10/2025</p>
+    <div class="mt-20">
+      <a class="btn btn-ghost" href="./cidium-landing-v2.html">← Volver al inicio</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     CONTENIDO
+     ==========================================================-->
+<section class="section-alt legal-section" id="contenido">
+  <div class="wrap legal">
+
+    <h2>Identidad y domicilio del responsable</h2>
+    <p>Cidium, con domicilio en <strong>Montecito 38, Nápoles, Benito Juárez, 03810 Ciudad de México, CDMX</strong>, es responsable del tratamiento de los datos personales recabados a través del sitio web <a href="https://cidium.com.mx" target="_blank" rel="noopener noreferrer">https://cidium.com.mx</a>.</p>
+    <p>Para cualquier duda relacionada con esta política o el uso de tus datos personales, puedes contactarnos al correo: <a href="mailto:contacto@cidium.com.mx">contacto@cidium.com.mx</a>.</p>
+
+    <h2>Datos personales que recopilamos</h2>
+    <p>Podemos recopilar los siguientes datos personales:</p>
+    <ul>
+      <li>Nombre, correo electrónico, teléfono y empresa (si se proporcionan en formularios de contacto o suscripción).</li>
+      <li>Dirección IP, tipo de navegador y sistema operativo (para fines estadísticos y de seguridad).</li>
+      <li>Datos incluidos en comentarios, mensajes o archivos multimedia que el usuario publique o envíe.</li>
+      <li>Información técnica mediante cookies o herramientas analíticas.</li>
+      <li>Cidium no solicita datos personales sensibles. En caso de que el usuario proporcione voluntariamente información de esta naturaleza, será tratada conforme a las disposiciones legales aplicables.</li>
+    </ul>
+
+    <h2>Finalidades del tratamiento</h2>
+    <p>Tus datos personales serán utilizados para las siguientes finalidades:</p>
+    <p class="finalidades">a) Primarias (necesarias):</p>
+    <ul>
+      <li>Dar respuesta a solicitudes de información o contacto.</li>
+      <li>Proveer los servicios o productos solicitados.</li>
+      <li>Cumplir obligaciones contractuales y legales.</li>
+      <li>Mantener la seguridad del sitio web y prevenir fraudes.</li>
+    </ul>
+    <p class="finalidades">b) Secundarias (opcionales):</p>
+    <ul>
+      <li>Enviar información sobre servicios, promociones o actualizaciones.</li>
+      <li>Elaborar estadísticas, estudios o análisis internos para mejorar nuestros servicios.</li>
+    </ul>
+    <p>El usuario podrá en cualquier momento revocar su consentimiento para el uso de sus datos con fines secundarios mediante solicitud escrita o electrónica a <a href="mailto:contacto@cidium.com.mx">contacto@cidium.com.mx</a>.</p>
+
+    <h2>Uso de cookies y tecnologías similares</h2>
+    <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y recordar tus preferencias.</p>
+    <p>Puedes configurar tu navegador para rechazar las cookies, aunque algunas funciones del sitio podrían verse limitadas.</p>
+    <p>Las cookies pueden incluir:</p>
+    <ul>
+      <li>Cookies de sesión: almacenan información temporal mientras navegas.</li>
+      <li>Cookies persistentes: guardan preferencias durante un periodo determinado.</li>
+      <li>Cookies de terceros: empleadas por servicios externos como Google Analytics o YouTube.</li>
+      <li>El uso de cookies no implica la obtención de datos personales identificables, salvo que el usuario los proporcione voluntariamente.</li>
+    </ul>
+
+    <h2>Transferencia y resguardo de datos</h2>
+    <p>Tus datos personales no serán vendidos ni compartidos con terceros ajenos a Cidium, salvo en los siguientes casos:</p>
+    <ul>
+      <li>Proveedores de servicios de hospedaje, correo electrónico o herramientas de análisis web.</li>
+      <li>Autoridades competentes, cuando sea requerido por ley.</li>
+    </ul>
+    <p>Cidium aplica medidas administrativas, técnicas y físicas para proteger tu información contra pérdida, acceso no autorizado o alteración.</p>
+    <p>Todos los proveedores de Cidium están sujetos a acuerdos de confidencialidad y tratamiento de datos personales conforme a la legislación mexicana vigente.</p>
+
+    <h2>Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)</h2>
+    <p>Tienes derecho a:</p>
+    <ul>
+      <li>Acceder a los datos personales que tenemos sobre ti.</li>
+      <li>Rectificarlos si son inexactos o incompletos.</li>
+      <li>Cancelarlos cuando consideres que no se requieren.</li>
+      <li>Oponerte a su uso para fines específicos.</li>
+    </ul>
+    <p>Para ejercer tus derechos, envía una solicitud a <a href="mailto:contacto@cidium.com.mx">contacto@cidium.com.mx</a> indicando tu nombre completo, descripción de tu solicitud y medio para comunicarte la respuesta.</p>
+    <p>La solicitud deberá contener: (I) nombre completo del titular, (II) documentos que acrediten su identidad, (III) descripción clara de los datos respecto de los cuales busca ejercer los derechos, y (IV) cualquier otro elemento que facilite su localización.</p>
+
+    <h2>Conservación de los datos</h2>
+    <p>Los datos personales serán conservados únicamente durante el tiempo necesario para cumplir con las finalidades descritas y conforme a los plazos legales aplicables. Posteriormente serán eliminados o anonimizados.</p>
+    <p>Una vez cumplidas las finalidades del tratamiento, los datos serán eliminados de manera segura mediante métodos físicos o electrónicos que impidan su recuperación.</p>
+
+    <h2>Modificaciones al aviso de privacidad</h2>
+    <p>Cidium podrá actualizar este aviso en cualquier momento. Las modificaciones estarán disponibles en <a href="https://cidium.com.mx/politica-de-privacidad" target="_blank" rel="noopener noreferrer">https://cidium.com.mx/politica-de-privacidad</a>.</p>
+
+    <h2>Aceptación del aviso</h2>
+    <p>El uso de este sitio implica que el usuario ha leído, entendido y aceptado los términos de esta Política de Privacidad.</p>
+    <p>Al enviar cualquier formulario o continuar navegando en el sitio, el usuario manifiesta su consentimiento para el tratamiento de sus datos conforme a esta política.</p>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================
+     FOOTER
+     ==========================================================-->
+<footer>
+  <div class="wrap fbot"><span>© 2026 Cidium Security &amp; Technology · Ciudad de México</span> <span><a href="./politica-de-privacidad.html">Política de Privacidad</a> · <a href="https://x.com/cidiumsecurity" target="_blank" rel="noopener noreferrer" aria-label="Cidium Security en X">@cidiumsecurity</a></span></div>
+</footer>
+
+</body>
+</html>
