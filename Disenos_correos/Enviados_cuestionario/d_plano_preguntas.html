@@ -1,0 +1,35 @@
+<div style="font-family: Arial, sans-serif; color: #1E1E3C; line-height: 1.6; max-width: 600px;">
+  <p>Hola <strong>{{ $json.nombre }}</strong>,</p>
+  
+  <p>Gracias por utilizar la herramienta de diagnóstico de Cidium Security.</p>
+  <p>A continuación encontrarás tu Índice de Exposición frente a la LFPDPPP reformada.</p>
+  
+  <div style="background-color: #F8FAFC; border-left: 4px solid #FFB359; padding: 15px; margin: 24px 0;">
+    <h3 style="margin-top: 0; color: #000019;">Tu Índice de Exposición: <strong>{{ $json.ie }} / 100</strong></h3>
+    <p style="margin: 0;">Banda de riesgo: <strong style="text-transform: uppercase;">{{ $json.banda }}</strong></p>
+  </div>
+
+  <p>De acuerdo a tus respuestas, estas son tus <strong>brechas prioritarias</strong> identificadas:</p>
+  
+  <ul style="color: #1E1E3C; margin-bottom: 30px;">
+    <li style="margin-bottom: 10px;">{{ $json.brechas_top.join('</li><li style="margin-bottom: 10px;">') }}</li>
+  </ul>
+
+  <!-- MENSAJE DE CONTACTO DIRECTO -->
+  <p style="font-weight: bold; color: #000019; font-size: 1.1rem; margin-bottom: 5px;">
+    ¿Quieres contactarnos para revisar tu resultado a detalle?
+  </p>
+  <p style="margin-top: 0; margin-bottom: 30px;">
+    Si necesitas ayuda para mitigar estos riesgos, simplemente <strong>responde a este correo</strong> o escríbenos a <a href="mailto:contacto@cidium.com.mx" style="color: #000019; font-weight: bold;">contacto@cidium.com.mx</a> y nuestro equipo te asesorará.
+  </p>
+
+  <p style="font-size: 0.85rem; color: #1E1E3C; border-top: 1px solid #E2E8F0; padding-top: 15px;">
+    <em>* Resultado orientativo: identifica brechas y prioridades, no sustituye una auditoría formal ni constituye asesoría jurídica.</em>
+  </p>
+
+  <p style="margin-top: 30px;">
+    Saludos cordiales,<br>
+    <strong>Equipo de Cidium Security</strong><br>
+    <a href="https://cidium.com.mx" style="color: #000019; font-weight: bold;">cidium.com.mx</a>
+  </p>
+</div>

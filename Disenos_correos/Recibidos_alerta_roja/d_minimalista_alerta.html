@@ -1,0 +1,23 @@
+<div style="font-family: Arial, sans-serif; color: #000019; background-color: #FFFFFF; line-height: 1.6; max-width: 600px; margin: 0 auto; border: 2px solid #EF4444; border-radius: 8px; overflow: hidden;">
+  <div style="background-color: #EF4444; padding: 20px; text-align: center;">
+    <h2 style="color: #FFFFFF; margin: 0; text-transform: uppercase;">🚨 Lead en Banda Crítica</h2>
+  </div>
+  
+  <div style="padding: 24px;">
+    <p style="font-weight: bold; font-size: 1.1rem; margin-top: 0; color: #EF4444;">Ha ingresado un nuevo diagnóstico con resultado ROJO.</p>
+    <p style="margin-bottom: 24px;">Este prospecto requiere contacto prioritario <strong>antes de 24 horas hábiles</strong> para cumplir con nuestra promesa comercial.</p>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #F8FAFC; border-radius: 8px; overflow: hidden;">
+      <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0; width: 40%;"><strong>Empresa:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;">{{ $('Create a row').item.json.empresa }}</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><strong>Contacto:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;">{{ $('Create a row').item.json.nombre }}</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><strong>Correo:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><a href="mailto:{{ $('Create a row').item.json.correo }}" style="color: #000019; font-weight: bold;">{{ $('Create a row').item.json.correo }}</a></td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><strong>Teléfono:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;">{{ $('Create a row').item.json.telefono }}</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><strong>Índice de Exposición:</strong></td><td style="padding: 12px; border-bottom: 1px solid #E2E8F0;"><strong>{{ $('Create a row').item.json.ie }}</strong> / 100</td></tr>
+      <tr><td style="padding: 12px;"><strong>Valor de Prospecto (VP):</strong></td><td style="padding: 12px;"><strong style="color: #EF4444; font-size: 1.2rem;">{{ $('Create a row').item.json.vp }}</strong></td></tr>
+    </table>
+    
+    <p style="margin-top: 30px; font-size: 0.9rem; color: #1E1E3C; border-top: 1px solid #E2E8F0; padding-top: 15px;">
+      📌 <em>Revisa la tabla <strong>leads_diagnostico</strong> en Supabase para ver las respuestas completas de este prospecto y preparar la llamada.</em>
+    </p>
+  </div>
+</div>

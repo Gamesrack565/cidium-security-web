@@ -1,0 +1,19 @@
+<div style="font-family: Arial, sans-serif; color: #1E1E3C; line-height: 1.6; max-width: 600px;">
+  <h2 style="color: #EF4444; margin-bottom: 10px;">🚨 URGENTE: Lead en Banda Crítica</h2>
+
+  <p style="margin-top: 0;">Ha ingresado un nuevo diagnóstico con resultado <strong>ROJO</strong>.</p>
+  <p>Este prospecto requiere contacto prioritario <strong>antes de 24 horas hábiles</strong>.</p>
+
+  <div style="border-left: 4px solid #EF4444; padding-left: 15px; margin: 24px 0;">
+    <p style="margin: 5px 0;"><strong>Empresa:</strong> {{ $('Create a row').item.json.empresa }}</p>
+    <p style="margin: 5px 0;"><strong>Contacto:</strong> {{ $('Create a row').item.json.nombre }}</p>
+    <p style="margin: 5px 0;"><strong>Correo:</strong> <a href="mailto:{{ $('Create a row').item.json.correo }}" style="color: #000019; font-weight: bold;">{{ $('Create a row').item.json.correo }}</a></p>
+    <p style="margin: 5px 0;"><strong>Teléfono:</strong> {{ $('Create a row').item.json.telefono }}</p>
+    <p style="margin: 5px 0;"><strong>Índice de Exposición:</strong> {{ $('Create a row').item.json.ie }} / 100</p>
+    <p style="margin: 5px 0;"><strong>Valor de Prospecto (VP):</strong> <strong style="color: #EF4444; font-size: 1.1rem;">{{ $('Create a row').item.json.vp }}</strong></p>
+  </div>
+
+  <p style="font-size: 0.9rem; color: #1E1E3C; margin-top: 30px; border-top: 1px solid #E2E8F0; padding-top: 15px;">
+    📌 <em>Accede a Supabase para revisar las brechas detalladas de este prospecto antes de contactarlo.</em>
+  </p>
+</div>

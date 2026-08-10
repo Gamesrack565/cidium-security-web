@@ -1,0 +1,39 @@
+<div style="font-family: Arial, sans-serif; color: #000019; background-color: #FFFFFF; line-height: 1.6; max-width: 600px; margin: 0 auto; border: 1px solid #1E1E3C; border-radius: 8px; overflow: hidden;">
+  <div style="background-color: #000019; padding: 24px; text-align: center;">
+    <h2 style="color: #FFFFFF; margin: 0; font-size: 1.4rem;">Diagnóstico LFPDPPP</h2>
+  </div>
+  
+  <div style="padding: 24px;">
+    <p>Hola <strong>{{ $json.nombre }}</strong>,</p>
+    
+    <p>Gracias por utilizar la herramienta de diagnóstico de Cidium Security.</p>
+    <p>A continuación encontrarás tu Índice de Exposición frente a la LFPDPPP reformada.</p>
+    
+    <div style="background-color: #FFB359; padding: 20px; border-radius: 8px; margin: 24px 0; text-align: center;">
+      <h3 style="margin: 0; color: #000019; font-size: 1.25rem;">Tu Índice de Exposición: <strong>{{ $json.ie }} / 100</strong></h3>
+      <p style="margin: 5px 0 0 0; color: #000019; text-transform: uppercase;">Banda de riesgo: <strong>{{ $json.banda }}</strong></p>
+    </div>
+
+    <p>De acuerdo a tus respuestas, estas son tus <strong>brechas prioritarias</strong> identificadas:</p>
+    
+    <ul style="color: #000019; margin-bottom: 30px;">
+      <li style="margin-bottom: 10px;">{{ $json.brechas_top.join('</li><li style="margin-bottom: 10px;">') }}</li>
+    </ul>
+
+    <!-- MENSAJE DE CONTACTO DIRECTO -->
+    <p style="font-weight: bold; color: #000019; font-size: 1.1rem; margin-bottom: 5px;">
+      ¿Quieres contactarnos para revisar tu resultado a detalle?
+    </p>
+    <p style="margin-top: 0; margin-bottom: 30px;">
+      Si necesitas ayuda para mitigar estos riesgos, simplemente <strong>responde a este correo</strong> o escríbenos a <a href="mailto:contacto@cidium.com.mx" style="color: #000019; font-weight: bold;">contacto@cidium.com.mx</a> y nuestro equipo de expertos te asesorará.
+    </p>
+
+    <p style="font-size: 0.85rem; color: #1E1E3C; margin-top: 30px; border-top: 1px solid #E2E8F0; padding-top: 15px;">
+      <em>* Resultado orientativo: identifica brechas y prioridades, no sustituye una auditoría formal ni constituye asesoría jurídica.</em>
+    </p>
+  </div>
+  
+  <div style="background-color: #000019; padding: 16px 24px; text-align: center; color: #9A9AB4; font-size: 0.85rem;">
+    <p style="margin: 0;">© 2026 Cidium Security S.A. de C.V.</p>
+  </div>
+</div>

@@ -703,7 +703,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
    ============================================================ */
 
 const CONFIG = {
-  endpoint: "",                       // ← POST del lead. Vacío = fallback mailto.
+  // En espera del endpoint de n8n
+  endpoint: "",
   fallbackMail: "contacto@cidium.com.mx"
 };
 
@@ -843,6 +844,7 @@ function tieneSensibles(){
 }
 
 function calcular(){
+  // Eliminamos el VP (Valor de Prospecto), esto para que N8N se encarge de todo esto
   const scored = PREGUNTAS.filter(p=>p.peso>0);
   let ieBase = 0;
   const fallos = [];
@@ -860,18 +862,7 @@ function calcular(){
   const banda = BANDAS.find(b=>ie<=b.max);
   const top = fallos.sort((a,b)=>b.peso-a.peso).slice(0,3);
 
-  // --- VP interno ---
-  const tamMap = {"1-10":45,"11-50":100,"51-100":90,"100+":65};
-  const nSens  = (R.datos||[]).filter(v=>PREGUNTAS[1].opts.find(o=>o.v===v&&o.sens)).length;
-  const nTipos = (R.datos||[]).length;
-  const sensScore = Math.min(100, nSens*30 + nTipos*10);
-  const fitMap = {verde:10, amarillo:100, naranja:90, rojo:70};
-  const urgencia = Math.min(100, ie);
-  const vp = Math.round(
-    .30*(tamMap[R.tam]||50) + .25*sensScore + .30*fitMap[banda.key] + .15*urgencia
-  );
-
-  return {ie, ieBase:Math.round(ieBase), banda, top, sens, vp};
+  return {ie, ieBase:Math.round(ieBase), banda, top, sens}; 
 }
 
 /* ---------- Render ---------- */
@@ -1071,7 +1062,7 @@ function enviarLead(e){
       empresa:document.getElementById("lc").value.trim(),
       telefono:document.getElementById("lt").value.trim()
     },
-    respuestas:{...R},
+    respuestas:{...R}, // Mandamos las respuestas crudas para que n8n trabaje
     resultado:{
       ie:resultado.ie,
       ie_base:resultado.ieBase,
@@ -1079,10 +1070,7 @@ function enviarLead(e){
       datos_sensibles:resultado.sens,
       brechas_top:resultado.top.map(g=>g.gap.t)
     },
-    interno:{
-      vp:resultado.vp,
-      ruta:resultado.banda.key
-    }
+    interno:{ ruta: resultado.banda.key } // Quitamos el vp de aquí
   };
 
   const done = ()=>{
