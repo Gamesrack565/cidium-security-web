@@ -90,16 +90,21 @@ header{position:sticky;top:0;z-index:60;background:rgba(0,0,25,.96);border-botto
 .nav{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
 .logo{display:flex;align-items:center;min-height:44px;text-decoration:none;}
 .logo-img{display:block;width:auto;height:56px;object-fit:contain;}
-.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links{display:flex;gap:22px;align-items:center;}
 .nav-links a{color:var(--fg-2);text-decoration:none;font-size:.975rem;font-weight:500;min-height:44px;display:flex;align-items:center;}
 .nav-links a:hover{color:var(--accent);}
+.nav-links a.active{color:var(--accent);}
+@media(min-width:1121px){
+  .nav-links a.active{position:relative;}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;border-radius:2px;background:var(--accent);}
+}
 .nav .btn{padding:10px 18px;font-size:.975rem;}
 .nav-toggle{display:none;width:44px;height:44px;flex:0 0 auto;margin-left:auto;margin-right:10px;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:1px solid var(--line);border-radius:10px;cursor:pointer;padding:0;}
 .nav-toggle-bar{display:block;width:20px;height:2px;border-radius:2px;background:var(--fg);transition:transform .2s ease,opacity .2s ease;}
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0;}
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media(max-width:900px){
+@media(max-width:1120px){
   .nav-toggle{display:inline-flex;}
   .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;background:rgba(0,0,25,.99);border-bottom:1px solid var(--line);padding:10px 18px 18px;display:none;box-shadow:0 24px 40px -28px rgba(0,0,0,.7);}
   .nav-links.open{display:flex;}
@@ -317,7 +322,6 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
    ============================================================ */
 @media(max-width:1120px){
   .wrap{padding-left:28px;padding-right:28px;}
-  .nav-links{gap:22px;}
 }
 @media(max-width:640px){
   section{padding:54px 0;}
@@ -362,7 +366,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
       <span class="nav-toggle-bar" aria-hidden="true"></span>
       <span class="nav-toggle-bar" aria-hidden="true"></span>
     </button>
-    <nav class="nav-links" id="navMenu" aria-label="Navegación principal"><a href="#diagnostico">Diagnóstico</a> <a href="#convergencia">Cobertura</a> <a href="#servicios">Servicios</a> <a href="#nosotros">Nosotros</a></nav>
+    <nav class="nav-links" id="navMenu" aria-label="Navegación principal"><a href="#brecha">El problema</a> <a href="#convergencia">Cobertura</a> <a href="#servicios">Servicios</a> <a href="#proceso">Cómo trabajamos</a> <a href="#educacion">Formación</a> <a href="#nosotros">Nosotros</a> <a href="#faq">Preguntas frecuentes</a></nav>
     <a class="btn btn-primary" href="#diagnostico">Diagnóstico gratis</a>
   </div>
 </header>
@@ -853,6 +857,31 @@ let paso = -1;                 // -1 = intro, 0..12 = preguntas, 99 = resultado
 const R = {};                  // respuestas
 let resultado = null;
 
+/* ---------- Persistencia (sessionStorage) ---------- */
+const KEY="cidium_diag_v1";
+let _savedForm = null;
+function persist(){
+  const form = {};
+  ["ln","le","lc","lt"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) form[id]=el.value;
+  });
+  try{
+    sessionStorage.setItem(KEY, JSON.stringify({paso, R, resultado, form}));
+  }catch(e){}
+}
+function restaurar(){
+  let saved=null;
+  try{ saved=JSON.parse(sessionStorage.getItem(KEY)); }catch(e){}
+  if(!saved || typeof saved.paso!=="number") return;
+  if(saved.paso!==-1 && saved.paso!==99 && (saved.paso<0 || saved.paso>=PREGUNTAS.length)) return;
+  if(saved.paso===99 && (!saved.resultado || !saved.resultado.banda)) return;
+  paso=saved.paso;
+  if(saved.R && typeof saved.R==="object") Object.assign(R, saved.R);
+  resultado=saved.resultado || null;
+  _savedForm=(saved.form && typeof saved.form==="object") ? saved.form : null;
+}
+
 const body  = document.getElementById("dBody");
 const bar   = document.getElementById("dBar");
 const head  = document.getElementById("dHead");
@@ -958,6 +987,7 @@ function elegir(id,val,multi){
   }
 
   renderPregunta();
+  persist();
 }
 
 function siguiente(){
@@ -972,11 +1002,13 @@ function siguiente(){
 
   if(paso===99) resultado = calcular();
 
+  persist();
   render();
 }
 
 function atras(){
   paso = Math.max(-1, paso-1);
+  persist();
   render();
 }
 
@@ -1060,10 +1092,21 @@ function renderResultado(){
   });
 
   const lf=document.getElementById("leadForm");
-  if(lf) lf.addEventListener("submit", enviarLead);
+  if(lf){
+    lf.addEventListener("submit", enviarLead);
+    lf.querySelectorAll("input").forEach(i=>i.addEventListener("input", persist));
+    if(_savedForm){
+      ["ln","le","lc","lt"].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el && _savedForm[id]) el.value=_savedForm[id];
+      });
+    }
+  }
 }
 
 function reiniciar(){
+  sessionStorage.removeItem(KEY);
+  _savedForm=null;
   Object.keys(R).forEach(k=>delete R[k]);
   paso=-1;
   resultado=null;
@@ -1095,6 +1138,7 @@ function enviarLead(e){
   };
 
   const done = ()=>{
+    sessionStorage.removeItem(KEY);
     document.querySelector("#diagnostico .capture").innerHTML =
       `<div class="sent"><b>Listo. Te llegará el informe ampliado.</b>
        <p style="margin-top:8px;font-size:.93rem">${resultado.banda.key==="rojo"
@@ -1130,6 +1174,33 @@ function enviarLead(e){
   }
 }
 
+/* ---------- Persistencia del formulario "Escríbenos" ---------- */
+const KEYC="cidium_contacto_v1";
+const cnEl=document.getElementById("cn");
+const ceEl=document.getElementById("ce");
+const cmEl=document.getElementById("cm");
+const ccEl=document.getElementById("cc");
+function persistContacto(){
+  try{
+    sessionStorage.setItem(KEYC, JSON.stringify({
+      cn:cnEl?cnEl.value:"", ce:ceEl?ceEl.value:"", cm:cmEl?cmEl.value:"", cc:ccEl?ccEl.checked:false
+    }));
+  }catch(e){}
+}
+function restaurarContacto(){
+  let saved=null;
+  try{ saved=JSON.parse(sessionStorage.getItem(KEYC)); }catch(e){}
+  if(!saved) return;
+  if(cnEl && saved.cn) cnEl.value=saved.cn;
+  if(ceEl && saved.ce) ceEl.value=saved.ce;
+  if(cmEl && saved.cm) cmEl.value=saved.cm;
+  if(ccEl && saved.cc) ccEl.checked=true;
+}
+if(cnEl) cnEl.addEventListener("input",persistContacto);
+if(ceEl) ceEl.addEventListener("input",persistContacto);
+if(cmEl) cmEl.addEventListener("input",persistContacto);
+if(ccEl) ccEl.addEventListener("change",persistContacto);
+
 /* ---------- Formulario de contacto ---------- */
 document
   .getElementById("contactForm")
@@ -1159,6 +1230,7 @@ document
     }
 
     e.target.classList.add("hidden");
+    sessionStorage.removeItem(KEYC);
 
     const ok=document.getElementById("contactOk");
     ok.classList.remove("hidden");
@@ -1188,6 +1260,42 @@ if(navToggle&&navMenu){
   });
 }
 
+/* ---------- Scroll spy: resalta la sección en vista ---------- */
+(function(){
+  const links=[...document.querySelectorAll("#navMenu a[href^='#']")];
+  if(!links.length) return;
+  const map={};
+  links.forEach(a=>{
+    const id=a.getAttribute("href").slice(1);
+    if(document.getElementById(id)) map[id]=a;
+  });
+  const alt={contacto:"faq"};
+  const ids=["top","realidad","brecha","convergencia","diagnostico","servicios","proceso","educacion","nosotros","faq","contacto"];
+  const el=ids.map(id=>document.getElementById(id)).filter(Boolean);
+  if(!el.length) return;
+
+  let raf=0;
+  const OFFSET=96;
+  const setActive=()=>{
+    const pos=window.scrollY+OFFSET;
+    let cur=el[0];
+    for(const s of el){ if(s.offsetTop<=pos) cur=s; else break; }
+    const target=map[cur.id]||map[alt[cur.id]]||null;
+    links.forEach(a=>{
+      const on=a===target;
+      a.classList.toggle("active",on);
+      if(on) a.setAttribute("aria-current","true");
+      else a.removeAttribute("aria-current");
+    });
+  };
+  const onScroll=()=>{ if(!raf) raf=requestAnimationFrame(()=>{ raf=0; setActive(); }); };
+  setActive();
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",onScroll);
+})();
+
+restaurar();
+restaurarContacto();
 render();
 </script>
 </body>
