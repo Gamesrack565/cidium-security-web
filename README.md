@@ -35,7 +35,7 @@ El flujo importado marcará errores en algunos nodos hasta que se configuren las
 
 ## 2. Configuración del Frontend
 
-En el archivo `cidium-landing-v2.html`, ubica el bloque de configuración al inicio del script y pega la URL de producción que generó n8n en el paso anterior:
+En el archivo `index.html`, ubica el bloque de configuración al inicio del script y pega la URL de producción que generó n8n en el paso anterior:
 
 ```javascript
 const CONFIG = {
@@ -99,7 +99,7 @@ Para recibir las alertas rojas con las preguntas y respuestas legibles (en lugar
 ### Mantenimiento (Importante para Frontend)
 Existe una regla de oro para este nodo: **Si el diseño del formulario en la Landing Page cambia, este nodo también debe actualizarse.**
 
-1. **Si se agrega o edita una pregunta en el HTML (`cidium-landing-v2.html`):**
+1. **Si se agrega o edita una pregunta en el HTML (`index.html`):**
    Se debe agregar la misma clave y el texto exacto en el diccionario `PREGUNTAS` del nodo.
    ```javascript
    const PREGUNTAS = {
