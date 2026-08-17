@@ -394,16 +394,6 @@ header.scrolled{box-shadow:0 14px 34px -20px rgba(0,0,0,.85);}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
 }
 /* ============================================================
-   STICKY MOBILE CTA
-   ============================================================ */
-.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--accent);color:#000019;text-align:center;padding:14px 24px;font-weight:700;font-size:1rem;font-family:inherit;text-decoration:none;border:none;box-shadow:0 -4px 20px rgba(0,0,0,.5);transition:transform .25s ease;}
-.sticky-cta:active{transform:scale(.97);}
-@media(max-width:900px){
-  .sticky-cta{display:block;}
-  footer{padding-bottom:72px;}
-}
-@media(min-width:901px){.sticky-cta{display:none!important;}}
-/* ============================================================
    COOKIE BANNER
    ============================================================ */
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--bg-2);border-top:1px solid var(--line);padding:18px 24px;box-shadow:0 -8px 30px rgba(0,0,0,.6);animation:slideUp .35s cubic-bezier(.16,1,.3,1);}
@@ -774,8 +764,6 @@ header.scrolled{box-shadow:0 14px 34px -20px rgba(0,0,0,.85);}
   </div>
 </section>
 </main>
-
-<a class="sticky-cta" href="#diagnostico" aria-label="Iniciar diagnóstico gratuito">Diagnóstico gratis <span class="arr">→</span></a>
 
 <!-- ==========================================================
      FOOTER
@@ -1417,18 +1405,6 @@ restaurar();
 restaurarContacto();
 render();
 observeReveals(document);
-
-/* ---------- Sticky CTA: ocultar en la sección de diagnóstico ---------- */
-(function(){
-  const cta=document.querySelector(".sticky-cta");
-  if(!cta) return;
-  const diag=document.getElementById("diagnostico");
-  if(!diag) return;
-  const io=new IntersectionObserver(([e])=>{
-    cta.style.transform=e.isIntersecting?"translateY(120%)":"";
-  },{threshold:.15});
-  io.observe(diag);
-})();
 
 /* ---------- Cookie Banner ---------- */
 (function(){
