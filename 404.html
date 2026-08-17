@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada | Cidium Security & Technology</title>
+<meta name="description" content="La página que buscas no existe o fue movida. Vuelve al inicio para encontrar lo que necesitas.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="./imgs/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="./imgs/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./imgs/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" href="./imgs/favicon/apple-touch-icon.png">
+
+<style>
+@font-face{font-family:"Jost";src:url("./fonts/Jost/Jost-VariableFont_wght.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap;}
+@font-face{font-family:"Schibsted Grotesk";src:url("./fonts/Schibsted_Grotesk/SchibstedGrotesk-VariableFont_wght.ttf") format("truetype");font-style:normal;font-weight:400 900;font-display:swap;}
+:root{
+  --bg:#000019; --bg-2:#0B0B24; --bg-3:#0B0B24; --line:#1E1E3C;
+  --fg:#FFFFFF; --fg-2:#C7C7DA; --fg-3:#9A9AB4; --accent:#FFB359;
+  --accent-dk:#C77A22; --accent-glow:rgba(255,179,89,.14); --max:1120px; --r:14px;
+  --sans:"Jost","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --display:"Schibsted Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;font-size:17px;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+h1,h2{font-family:var(--display);line-height:1.2;letter-spacing:-.02em;font-weight:700;}
+p{color:var(--fg-2);}
+a{color:inherit;}
+.eyebrow{font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:16px;display:block;}
+.lead{font-size:1.125rem;max-width:62ch;color:var(--fg-3);}
+.center{text-align:center;}
+.center .lead{margin-left:auto;margin-right:auto;}
+.mt-20{margin-top:20px;}
+.skip-link{position:fixed;top:12px;left:12px;z-index:100;padding:10px 14px;border-radius:8px;background:var(--accent);color:var(--bg);font-weight:700;text-decoration:none;transform:translateY(-160%);transition:transform .15s ease;}
+.skip-link:focus{transform:translateY(0);}
+.btn{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:13px 24px;border-radius:10px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:.18s;}
+.btn-primary{background:var(--accent);color:#000019;}
+.btn-primary:hover{background:var(--accent);filter:brightness(1.04);transform:translateY(-1px);}
+.btn-ghost{border-color:var(--line);color:var(--fg);background:transparent;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+.btn-primary:focus-visible{outline-color:#FFFFFF;box-shadow:0 0 0 2px #000019;}
+/* NAV */
+header{position:sticky;top:0;z-index:60;background:rgba(0,0,25,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
+.logo{display:flex;align-items:center;min-height:44px;text-decoration:none;}
+.logo-img{display:block;width:auto;height:56px;object-fit:contain;}
+.nav .btn{padding:10px 18px;font-size:.975rem;}
+/* HERO 404 */
+.hero-404{padding:120px 0 140px;overflow:hidden;position:relative;}
+.hero-404::before{content:"";position:absolute;top:-240px;left:50%;transform:translateX(-50%);width:880px;height:520px;background:radial-gradient(ellipse,var(--accent-glow),transparent 66%);pointer-events:none;z-index:0;}
+.hero-404 .wrap{position:relative;z-index:1;}
+.hero-404 h1{font-size:clamp(2.2rem,5vw,4rem);margin-bottom:0;}
+.hero-404 .code{font-size:clamp(5rem,12vw,9rem);font-family:var(--display);font-weight:800;color:var(--accent);opacity:.18;line-height:1;margin-bottom:-20px;letter-spacing:-.04em;}
+.hero-404 .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px;}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:var(--fg-3);}
+.fbot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;}
+.fbot a{min-height:44px;display:inline-flex;align-items:center;color:var(--fg-3);text-decoration:none;}
+.fbot a:hover{color:var(--accent);}
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--bg-2);border-top:1px solid var(--line);padding:18px 24px;box-shadow:0 -8px 30px rgba(0,0,0,.6);animation:slideUp .35s cubic-bezier(.16,1,.3,1);}
+.cookie-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.cookie-inner p{margin:0;font-size:.9rem;color:var(--fg-2);flex:1;min-width:280px;line-height:1.55;}
+.cookie-inner a{color:var(--accent);}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0;}to{transform:none;opacity:1;}}
+/* RESPONSIVE */
+@media(max-width:1120px){.wrap{padding-left:28px;padding-right:28px;}}
+@media(max-width:640px){
+  .wrap{padding-left:18px;padding-right:18px;}
+  .hero-404{padding-top:84px;padding-bottom:80px;}
+  .hero-404 .btns{flex-direction:column;align-items:stretch;}
+  .hero-404 .btns .btn{width:100%;justify-content:center;}
+  .fbot{align-items:flex-start;flex-direction:column;}
+  .cookie-inner{flex-direction:column;align-items:stretch;}
+  .cookie-btns .btn{flex:1;justify-content:center;}
+}
+@media(max-width:420px){.nav{min-height:76px;}.logo-img{height:52px;}.nav .btn{padding:9px 12px;font-size:.8rem;}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="./index.html" aria-label="Cidium Security & Technology - Inicio"><img src="./imgs/logo-fondo-oscuro.svg" alt="Cidium Security & Technology" class="logo-img"></a>
+    <a class="btn btn-primary" href="./index.html#diagnostico">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<main id="main-content">
+<section class="hero-404" id="top">
+  <div class="wrap center">
+    <div class="code">404</div>
+    <h1>Esta página no existe</h1>
+    <p class="lead mt-20">Puede que la dirección haya cambiado o que el enlace esté incompleto.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="./index.html">Volver al inicio <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="./index.html#diagnostico">Iniciar diagnóstico</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fbot"><span>© 2026 Cidium Security &amp; Technology · Ciudad de México</span> <span><a href="./politica-de-privacidad.html">Política de Privacidad</a> · <a href="https://x.com/cidiumsecurity" target="_blank" rel="noopener noreferrer" aria-label="Cidium Security en X">@cidiumsecurity</a></span></div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies" hidden>
+  <div class="cookie-inner">
+    <p>Utilizamos cookies para mejorar tu experiencia y analizar el tráfico. Puedes aceptarlas o rechazarlas. Lee más en nuestra <a href="./politica-de-privacidad.html">Política de Privacidad</a>.</p>
+    <div class="cookie-btns">
+      <button class="btn btn-primary" onclick="acceptCookies()" style="min-height:40px;padding:10px 20px;font-size:.9rem">Aceptar</button>
+      <button class="btn btn-ghost" onclick="rejectCookies()" style="min-height:40px;padding:10px 20px;font-size:.9rem">Rechazar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById("cookieBanner");
+  if(!b)return;
+  var p=null;
+  try{p=localStorage.getItem("cidium_cookies");}catch(e){}
+  if(!p)b.hidden=false;
+})();
+function acceptCookies(){try{localStorage.setItem("cidium_cookies","accepted");}catch(e){}document.getElementById("cookieBanner").hidden=true;}
+function rejectCookies(){try{localStorage.setItem("cidium_cookies","rejected");}catch(e){}document.getElementById("cookieBanner").hidden=true;}
+</script>
+</body>
+</html>
