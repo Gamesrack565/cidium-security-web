@@ -1406,6 +1406,29 @@ restaurarContacto();
 render();
 observeReveals(document);
 
+/* ---------- Navegación interna sin # en la URL ---------- */
+document.addEventListener("click",(e)=>{
+  const link=e.target.closest('a[href^="#"]');
+  if(!link) return;
+  const hash=link.getAttribute("href");
+  if(!hash||hash==="#") return;
+  const target=document.querySelector(hash);
+  if(!target) return;
+  e.preventDefault();
+  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"start"});
+  history.replaceState(null,"",window.location.pathname+window.location.search);
+});
+/* ---------- Limpiar hash al entrar mediante enlace directo ---------- */
+window.addEventListener("load",()=>{
+  if(!window.location.hash) return;
+  history.replaceState(null,"",window.location.pathname+window.location.search);
+});
+/* ---------- Ocultar /index.html de la URL ---------- */
+if(window.location.pathname.endsWith("/index.html")){
+  history.replaceState(null,"",window.location.pathname.replace(/index\.html$/,"")+window.location.search);
+}
+
 /* ---------- Cookie Banner ---------- */
 (function(){
   const banner=document.getElementById("cookieBanner");
