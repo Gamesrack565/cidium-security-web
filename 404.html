@@ -66,6 +66,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
 .cookie-inner p{margin:0;font-size:.9rem;color:var(--fg-2);flex:1;min-width:280px;line-height:1.55;}
 .cookie-inner a{color:var(--accent);}
 .cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-hidden{display:none!important;}
 @keyframes slideUp{from{transform:translateY(100%);opacity:0;}to{transform:none;opacity:1;}}
 /* RESPONSIVE */
 @media(max-width:1120px){.wrap{padding-left:28px;padding-right:28px;}}
@@ -113,7 +114,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
   <div class="wrap fbot"><span>© 2026 Cidium Security &amp; Technology · Ciudad de México</span> <span><a href="./politica-de-privacidad.html">Política de Privacidad</a> · <a href="https://x.com/cidiumsecurity" target="_blank" rel="noopener noreferrer" aria-label="Cidium Security en X">@cidiumsecurity</a></span></div>
 </footer>
 
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies" hidden>
+<div class="cookie-banner cookie-hidden" id="cookieBanner" role="dialog" aria-label="Aviso de cookies">
   <div class="cookie-inner">
     <p>Utilizamos cookies para mejorar tu experiencia y analizar el tráfico. Puedes aceptarlas o rechazarlas. Lee más en nuestra <a href="./politica-de-privacidad.html">Política de Privacidad</a>.</p>
     <div class="cookie-btns">
@@ -125,14 +126,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
 
 <script>
 (function(){
-  var b=document.getElementById("cookieBanner");
-  if(!b)return;
-  var p=null;
-  try{p=localStorage.getItem("cidium_cookies");}catch(e){}
-  if(!p)b.hidden=false;
+  const banner=document.getElementById("cookieBanner");
+  if(!banner) return;
+  let preference=null;
+  try{preference=localStorage.getItem("cidium_cookies");}catch(e){}
+  if(!preference) banner.classList.remove("cookie-hidden");
 })();
-function acceptCookies(){try{localStorage.setItem("cidium_cookies","accepted");}catch(e){}document.getElementById("cookieBanner").hidden=true;}
-function rejectCookies(){try{localStorage.setItem("cidium_cookies","rejected");}catch(e){}document.getElementById("cookieBanner").hidden=true;}
+function acceptCookies(){try{localStorage.setItem("cidium_cookies","accepted");}catch(e){}document.getElementById("cookieBanner").classList.add("cookie-hidden");}
+function rejectCookies(){try{localStorage.setItem("cidium_cookies","rejected");}catch(e){}document.getElementById("cookieBanner").classList.add("cookie-hidden");}
 </script>
 </body>
 </html>
