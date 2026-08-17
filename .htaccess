@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# /politica-de-privacidad → /politica-de-privacidad.html
+RewriteRule ^politica-de-privacidad$ politica-de-privacidad.html [L]
+
+# /index.html → /
+RewriteRule ^index\.html$ / [R=301,L]

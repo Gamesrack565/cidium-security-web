@@ -280,6 +280,11 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.84rem;color:va
 </div>
 
 <script>
+/* ---------- Ocultar /politica-de-privacidad.html de la URL ---------- */
+if(window.location.pathname.endsWith("/politica-de-privacidad.html")){
+  history.replaceState(null,"",window.location.pathname.replace(/politica-de-privacidad\.html$/,"politica-de-privacidad")+window.location.search);
+}
+
 (function(){
   const banner=document.getElementById("cookieBanner");
   if(!banner) return;
