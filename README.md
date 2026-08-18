@@ -48,16 +48,18 @@ const CONFIG = {
 
 Si en el futuro el equipo de marketing o ventas desea cambiar el texto de los correos automáticos, se debe hacer directamente en n8n:
 
-1. Entra a n8n y abre el flujo de Cidium.
-2. Identifica el nodo de correo que deseas modificar:
-   * **"Send an Email" (El primero):** Es el informe que le llega al cliente.
-   * **"Send an Email1" (El de arriba):** Es el correo directo del formulario "Hablemos".
-   * **"Send an Email2" (El de la alerta):** Es la alerta roja interna de SLA 24h.
-3. Haz doble clic en el nodo.
-4. En el campo **HTML**, puedes editar libremente el texto.
-   > ⚠️ **Precaución:** No modifiques las partes que están entre llaves `{{ }}` (ej. `{{ $json.nombre }}`), ya que son las variables dinámicas que se llenan con los datos del usuario.
-5. Al terminar, guarda los cambios haciendo clic en **Save** en la esquina superior derecha del flujo.
+Si en el futuro el equipo de marketing o ventas desea cambiar el texto o diseño de los correos automáticos, se debe realizar directamente en la plataforma n8n:
 
+1. Entra a n8n y abre el flujo principal ("My workflow").
+2. Identifica el nodo de correo que deseas modificar:
+   * **"Correo_cliente":** Es la notificación principal que le llega al prospecto con su informe.
+   * **"Correo_contacto":** Es el correo directo para quienes usan el formulario de contacto simple o "Hablemos".
+   * **"Correo_alerta_roja":** Es la alerta interna para notificar al equipo de Cidium que existe un lead crítico con banda roja (SLA 24h).
+3. Haz doble clic sobre el nodo específico para abrir su panel de configuración.
+4. En el parámetro **Message**, verifica que el formato esté configurado para interpretar HTML. Ahí podrás editar o reemplazar libremente el código fuente.
+   > ⚠️ **Precaución sobre variables dinámicas:** Al reemplazar el código HTML, es crucial tener precaución de no eliminar ni alterar las expresiones de n8n (variables encerradas entre llaves dobles, por ejemplo: `{{$json["nombre"]}}`). Estas etiquetas son responsables de inyectar la información personalizada del prospecto en el correo.
+5. **Repositorio de diseños:** Para consultar o restaurar los diseños originales, los códigos fuente base se encuentran en el repositorio de GitHub: `cidium-security-web/Disenos correos` en la rama `abram-logica-calculo Gamesrack565/cidium-security-web`.
+6. Al terminar, aplica las modificaciones haciendo clic en el indicador amarillo de la esquina superior derecha y seleccionando **Publish** / **Save**. Verifica que el indicador retorne a color verde ("Published") para confirmar que los cambios están en producción.
 ---
 
 ## 4. Base de Datos (Supabase)
