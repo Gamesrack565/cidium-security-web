@@ -61,8 +61,7 @@ Si en el futuro el equipo de marketing o ventas desea cambiar el texto de los co
 ---
 
 ## 4. Base de Datos (Supabase)
-
-Si se necesita recrear la base de datos en otro entorno, ejecuta el script SQL dadó en el archivo `supabase.sql` en el SQL editor de Supabase. Esto creará la tabla `leads` con las columnas necesarias y activará la RLS.
+Todo se encunetra en la base de datos de Supabase, que es un servicio de PostgreSQL con RLS (Row Level Security) activado. Esto significa que los datos están protegidos y solo pueden ser accedidos por el backend (n8n) y no directamente por los usuarios.
 
 
 ## 5. Lógica Comercial: Cálculo del Valor de Prospecto (VP)
