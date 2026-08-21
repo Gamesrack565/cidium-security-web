@@ -685,12 +685,12 @@ header.scrolled{box-shadow:0 14px 34px -20px rgba(0,0,0,.85);}
     </div>
     <div class="grid g2">
       <div class="person" data-rv>
-        <div class="avatar"><span>AC</span></div>
-        <div><b>Allan Cidium</b> <span>Director General · Estrategia y cumplimiento</span></div>
+        <div class="avatar"><span>A</span></div>
+        <div><b>Allan</b> <span>Fundador · Ingeniero en Sistemas</span></div>
       </div>
       <div class="person" data-rv>
-        <div class="avatar"><span>EG</span></div>
-        <div><b>Erick Galindo Ríos</b> <span>Gerente de Operaciones y Sistemas</span></div>
+        <div class="avatar"><span>E</span></div>
+        <div><b>Erick</b> <span>Fundador · Maestro en Ciberseguridad</span></div>
       </div>
     </div>
     <p class="section-kicker">Marcos de referencia</p>
@@ -744,7 +744,7 @@ header.scrolled{box-shadow:0 14px 34px -20px rgba(0,0,0,.85);}
       <div class="mt-28">
         <div class="row"><b>Ciudad de México</b> · y zona metropolitana</div>
         <div class="row"><b><a href="tel:+525661502832">+52 56 6150 2832</a></b></div>
-        <div class="row"><b><a href="mailto:contacto@cidium.com.mx">contacto@cidium.com.mx</a></b></div>
+        <div class="row"><b>contacto@cidium.com.mx</b></div>
       </div>
     </div>
     <div class="capture" style="margin-top:0" data-rv>
@@ -794,7 +794,7 @@ header.scrolled{box-shadow:0 14px 34px -20px rgba(0,0,0,.85);}
    ============================================================ */
 
 const CONFIG = {
-  endpoint: "",
+  endpoint: "https://api.cidium.com.mx/webhook/3b03831d-e639-42b2-8008-7a10ddcf7449",
   fallbackMail: "contacto@cidium.com.mx"
 };
 
@@ -1244,13 +1244,6 @@ function enviarLead(e){
       payload
     );
 
-    const body = encodeURIComponent(
-      `Diagnóstico LFPDPPP\n\nNombre: ${payload.contacto.nombre}\nEmpresa: ${payload.contacto.empresa}\nCorreo: ${payload.contacto.correo}\nTeléfono: ${payload.contacto.telefono||"—"}\n\nÍndice de Exposición: ${payload.resultado.ie}/100 (${payload.resultado.banda})\nDatos sensibles: ${payload.resultado.datos_sensibles?"Sí":"No"}\n\nBrechas prioritarias:\n- ${payload.resultado.brechas_top.join("\n- ")}`
-    );
-
-    window.location.href =
-      `mailto:${CONFIG.fallbackMail}?subject=${encodeURIComponent("Diagnóstico LFPDPPP — "+payload.contacto.empresa)}&body=${body}`;
-
     done();
   }
 }
@@ -1306,8 +1299,7 @@ document
         })
       }).catch(()=>{});
     }else{
-      window.location.href=
-        `mailto:${CONFIG.fallbackMail}?subject=${encodeURIComponent("Contacto web — "+p.nombre)}&body=${encodeURIComponent(p.mensaje+"\n\n"+p.correo)}`;
+      console.log("[Cidium] Contacto capturado (endpoint no configurado):", p);
     }
 
     e.target.classList.add("hidden");
